@@ -9,15 +9,15 @@ public class Spawner : MonoBehaviour
     protected static Spawner instance;
     public static Spawner Instance { get => instance; }
 
-
     [SerializeField] protected GameObject prefabs;
     [SerializeField] protected float minTras;
     [SerializeField] protected float maxTras;
     protected TMP_Text healthText;
 
-    private int countPrefab = 10;
+    private int countPrefab = 5;
     private int health = 0;
-
+    public int CountPrefab { get => countPrefab; set => countPrefab = value; }
+    public int Health { get => health; set => health = value; }
 
     void Awake()
     {
@@ -25,12 +25,11 @@ public class Spawner : MonoBehaviour
     }
     protected void Update()
     {
-        //callSpaw();
+        callSpaw();
     }
     
     public void callSpaw()
     {
-        GameManager.Instance.UpdateGameState(GameState.Playing);
         for (int i = 0; i < countPrefab; i++)
         {
             //await Task.Delay(2000);
@@ -40,6 +39,7 @@ public class Spawner : MonoBehaviour
             updateTextBox();
             Debug.Log(i);
         }
+        GameManager.Instance.UpdateGameState(GameState.Playing);
     }
 
     protected virtual void Spawn()

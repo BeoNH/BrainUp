@@ -25,6 +25,6 @@ public class MenuManager : MonoBehaviour
     public void startGame()
     {
         GameMenu.SetActive(false);
-        Spawner.Instance.callSpaw();       
+        //Spawner.Instance.callSpaw();       
     }
 }
